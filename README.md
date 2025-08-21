@@ -14,7 +14,8 @@ NVIDIA Isaac Sim 4.5.0 environment for ROS 2 testing of the SE3 Hello Robot.
 
 - `Robot_Import_Files/` – modified URDF with updated collision meshes  
 - `SE3_ROS2.usd/` – Issac Sim USD stage with the imported robot
-- `README.md`         – this file  
+- `stretch_refrence.usd/` - Refrence ready USD, for import into environments.
+- `README.md`         – this file
 
 ## Import Process
 
@@ -46,7 +47,15 @@ Adapted from the Isaac Sim docs:
      4. Joint state publisher/subscriber  
 
 ## Launching the Simulation
+1. Launch isaac sim with `./run_isaac.sh`
+2. Select an environment or create a scene for exploration in the robot editor.
+   - https://docs.isaacsim.omniverse.nvidia.com/latest/assets/usd_assets_environments.html
+4. Add the stretch as a refrence to the scene `file->import reference`
+5. Play simulation and run ROS2 nodes
 
-```bash
-# Launch Isaac Sim with Model:
-./run_isaac.sh --project /path/to/SE3_Ros2.usd
+## Future Work
+- Camera intrinsics investigaiton
+     - Problems are arrising in a distortion of the pc when using the rgb-d data. Suspect that there is a scalling on the camera intrinsics data set in isaac sim.
+- Code for programically controlled environmental changes
+     - An example of how this could be implimented is seen in env_man_script.py
+     - This could be extended to automate evaluation using geometry found in the USD    
